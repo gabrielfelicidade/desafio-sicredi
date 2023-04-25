@@ -32,3 +32,6 @@ O versionamento funcionaria via endpoint, ou seja, toda feature adicionada nasce
 
 ### Rodar a aplicação
 `./gradlew bootRun`
+
+### O swagger da aplicação pode ser encontrado em
+`http://localhost:8080/swagger-ui.html`
