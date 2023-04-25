@@ -24,12 +24,12 @@ public class VoteServiceImpl implements VoteService {
     @Override
     public Vote createVote(final String userId,
                            final CreateVoteRequest request) {
-        if (userAlreadyVotedInSchedule(userId, request.getScheduleId())) {
-            throw new UserAlreadyVotedInScheduleException();
-        }
-
         if (scheduleDoesNotHaveOpenVotingSession(request.getScheduleId())) {
             throw new ScheduleDoesNotHaveOpenVotingSession();
+        }
+
+        if (userAlreadyVotedInSchedule(userId, request.getScheduleId())) {
+            throw new UserAlreadyVotedInScheduleException();
         }
 
         final var voteEntity = voteRepository.save(voteMapper.toEntity(userId, request));
